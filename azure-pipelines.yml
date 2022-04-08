@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  name: defualt
+  name: Defualt
 
 steps:
 - task: NodeTool@0

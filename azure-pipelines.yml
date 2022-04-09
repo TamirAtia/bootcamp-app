@@ -62,13 +62,15 @@ stages:
 
            
 
-#  - stage: Deploy
-#    jobs:
-#      - job: run_deploy
+ - stage: Deploy
+   jobs:
+     - job: run_deploy
 
-#        steps:
+       steps:
 
-#         - task: CopyFiles@2
-#           inputs:
-#             Contents: '**'
-#             TargetFolder: 
+        - task: Ansible@0
+          inputs:
+            ansibleInterface: 'agentMachine'
+            playbookPathOnAgentMachine: '/home/adminuser/ansible-bootcamp/playbook.yaml'
+            inventoriesAgentMachine: 'file'
+            inventoryFileOnAgentMachine: '/home/adminuser/ansible-bootcamp/inventory'

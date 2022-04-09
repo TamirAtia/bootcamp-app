@@ -24,9 +24,7 @@ stages:
               npm install
             displayName: 'npm install'
               
-          - script: |
-              npm pack
-            displayName: 'Package for npm release'
+
             
           - task: ArchiveFiles@2
             displayName: 'Archive files'

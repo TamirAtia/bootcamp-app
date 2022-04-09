@@ -31,6 +31,6 @@ steps:
     archiveType: tar
     archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).tar
     replaceExistingArchive: true
-- upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).tar
-  artifact: drop
+# - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).tar
+#   artifact: drop
 

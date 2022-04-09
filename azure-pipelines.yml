@@ -34,8 +34,26 @@ stages:
               rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
               includeRootFolder: false
               archiveType: tar
-              archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).tar
+              archiveFile: $(Build.ArtifactStagingDirectory)/bootcamp-app/webApp.tar
               replaceExistingArchive: true
           # - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).tar
           #   artifact: drop
+          
+          - task: PublishBuildArtifacts@1
+            inputs:
+             pathtoPublish: '$(Build.ArtifactStagingDirectory)/bootcamp-app/webApp.tar' 
+             artifactName: 'app-artifact'
+            displayName: 'Publish Artifact'
 
+
+              
+
+          - task: UniversalPackages@0
+            inputs:
+              command: 'publish'
+              publishDirectory: '$(Build.ArtifactStagingDirectory)/bootcamp-app'
+              feedsToUsePublish: 'internal'
+              vstsFeedPublish: 'e8d720f9-0860-4ddd-88fb-23050ed2bbf4'
+              vstsFeedPackagePublish: 'webApp-artifact'
+              versionOption: 'patch'
+              packagePublishDescription: 'publish the zip into azure artifact'

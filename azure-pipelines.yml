@@ -34,3 +34,9 @@ steps:
 - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).tar
   artifact: drop
 
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'drop'
+    publishLocation: 'pipeline'
+
